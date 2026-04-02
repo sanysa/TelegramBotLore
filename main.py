@@ -14,6 +14,7 @@ def create_markup():
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add(types.KeyboardButton('Узнать подробности об онлайн курсе'))
     markup.add(types.KeyboardButton('Оплатить онлайн курс'))
+    markup.add(types.KeyboardButton('Информация о Каринэ'))
     markup.add(types.KeyboardButton('Связаться с помощницами'))
     markup.add(types.KeyboardButton('Подробности оффлайн тренировки'))
     markup.add(types.KeyboardButton('Личная консультация'))
@@ -28,6 +29,17 @@ def handle_contact(message):
                      'https://wa.me/+77768867228\n'
                      'https://wa.me/+77009123282\n'
                      'https://wa.me/+77070702532',
+                     reply_markup=create_markup(), disable_web_page_preview=True)
+
+def handle_information(message):
+    bot.send_message(message.chat.id,
+                     'Меня зовут Каринэ.\n'
+                     'Я открыла женскую фитнес-студию Lore Evolution.\n'
+                     'В студии есть разные направления классов.\n'
+                     'Уроки веду и я сама, и команда квалифицированных тренеров.\n'
+                     'Также я веду онлайн-группы. Девочки занимаются онлайн по моей программе.\n'
+                     'Стаж непрерывного тренерства более 6 лет.\n'
+                     'Крупный фитнес-блог в инстаграм с более чем 70,000 подписчиков.',
                      reply_markup=create_markup(), disable_web_page_preview=True)
 
 def handle_offline_details(message):
@@ -90,6 +102,8 @@ def handle_text(message):
         handle_online_course_details(message)
     elif message.text == 'Оплатить онлайн курс':
         handle_payment(message)
+    elif message.text == 'Информация о Каринэ':
+        handle_information(message)
     elif message.text == 'Связаться с помощницами':
         handle_contact(message)
     elif message.text == 'Подробности оффлайн тренировки':
