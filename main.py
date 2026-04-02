@@ -173,5 +173,13 @@ def handle_payment(message):
 
 print("BASE_DIR:", BASE_DIR)
 print("FILES:", os.listdir(BASE_DIR))
+
+@bot.message_handler(func=lambda message: True)
+def always_update(message):
+    bot.send_message(
+        message.chat.id,
+        "Выберите действие:",
+        reply_markup=create_markup()
+    )
 # --- запуск бота ---
 bot.infinity_polling()
