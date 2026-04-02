@@ -16,6 +16,7 @@ def create_markup():
     markup.add(types.KeyboardButton('Подробности оффлайн тренировки'))
     markup.add(types.KeyboardButton('Личная консультация'))
     markup.add(types.KeyboardButton('Сотрудничество по рекламе'))
+    markup.add(types.KeyboardButton('Политика обработки персональных данных'))
     return markup
 
 # --- функции обработчики ---
@@ -70,6 +71,17 @@ def main(message):
     markup = create_markup()
     bot.send_message(message.chat.id, 'Добро пожаловать в онлайн тренировки с Каринэ! Выберите действие:', reply_markup=markup)
 
+
+def handle_personaldate(message):
+    file_path = '/Users/sanbex/Downloads/bot/personaldate.pdf'
+    if os.path.exists(file_path):
+        with open(file_path, 'rb') as file:
+            bot.send_document(message.chat.id, file)
+    else:
+        bot.send_message(message.chat.id, 'Файл не найден. Проверьте путь к файлу.')
+    pass
+
+
 @bot.message_handler(content_types=['text'])
 def handle_text(message):
     if message.text == 'Узнать подробности об онлайн курсе':
@@ -84,6 +96,8 @@ def handle_text(message):
         handle_consultation(message)
     elif message.text == 'Сотрудничество по рекламе':
         handle_advertising(message)
+    elif message.text == 'Политика обработки персональных данных':
+        handle_personaldate(message)
     else:
         bot.send_message(message.chat.id, 'Пожалуйста, выберите действие, используя кнопки ниже.', reply_markup=create_markup())
 
@@ -115,7 +129,7 @@ def handle_online_course_details(message):
                      reply_markup=create_markup(), parse_mode='Markdown')
 
 def handle_payment(message):
-    file_path = '/home/Assanali/2026.02.17 Договор оферты1.pdf'
+    file_path = '/Users/sanbex/Downloads/bot/2026.02.17 Договор оферты2.pdf'
     if os.path.exists(file_path):
         with open(file_path, 'rb') as file:
             bot.send_document(message.chat.id, file)
