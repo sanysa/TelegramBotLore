@@ -142,7 +142,7 @@ def handle_online_course_details(message):
                      '✨По питанию: на странице будет 2х часовое видео от Каринэ (доступно только до 4 мая), все подробно о питании , кбжу и как будем формировать наш рацион. (Конкретного меню с рецептами не будет).\n\n'
                      'Будет сформирована продуктовая корзина , для понимания из чего будет состоять ваш рацион.\n\n'
                      'Уведомляем Вас, что после загрузки видео урока по питанию возврат денежных средств будет невозможен🤫 Также просим учесть, что абонемент НЕ может быть заморожен или перенесен на следующий месяц🙏🏻, так как мы закрепляем за вами место.',
-                     reply_markup=create_markup(), parse_mode='Markdown')
+                     reply_markup=create_markup(), parse_mode='None')
 
 def handle_payment(message):
     file_path = os.path.join(BASE_DIR, 'Договор оферты.pdf')
@@ -167,19 +167,13 @@ def handle_payment(message):
                      'https://wa.me/+77070702532\n'
                      'Убедитесь, что вы добавились в группу ватсапе, после оплаты.\n'
                      '😌Если вы не резидент Республики Казахстан, то по реквизитам обращаться по номерам указанных выше',
-                     parse_mode='Markdown', disable_web_page_preview=True)
+                     parse_mode='None', disable_web_page_preview=True)
 
     threading.Thread(target=expire_message, args=(message.chat.id, msg.message_id), daemon=True).start()
 
 print("BASE_DIR:", BASE_DIR)
 print("FILES:", os.listdir(BASE_DIR))
 
-@bot.message_handler(func=lambda message: True)
-def always_update(message):
-    bot.send_message(
-        message.chat.id,
-        "Выберите действие:",
-        reply_markup=create_markup()
-    )
+bot.infinity_polling(timeout=10, long_polling_timeout=5)
 # --- запуск бота ---
 bot.infinity_polling()
