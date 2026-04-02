@@ -87,7 +87,7 @@ def main(message):
 
 
 def handle_personaldate(message):
-    file_path = os.path.join(BASE_DIR, 'personal.pdf')
+    file_path = os.path.join(BASE_DIR, 'Политика обработки.pdf.pdf')
     if os.path.exists(file_path):
         with open(file_path, 'rb') as file:
             bot.send_document(message.chat.id, file)
@@ -145,7 +145,7 @@ def handle_online_course_details(message):
                      reply_markup=create_markup(), parse_mode='Markdown')
 
 def handle_payment(message):
-    file_path = os.path.join(BASE_DIR, 'offer.pdf')
+    file_path = os.path.join(BASE_DIR, 'Договор оферты.pdf.pdf')
     if os.path.exists(file_path):
         with open(file_path, 'rb') as file:
             bot.send_document(message.chat.id, file)
