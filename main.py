@@ -4,6 +4,8 @@ import os
 import telebot
 from telebot import types
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 API_TOKEN = '7244528475:AAHFw-RzNgnupKctSGliVsk7_YeLDNSZew4'
 bot = telebot.TeleBot(API_TOKEN)
 bot.remove_webhook()
@@ -73,12 +75,12 @@ def main(message):
 
 
 def handle_personaldate(message):
-    file_path = 'personaldate.pdf'
+    file_path = os.path.join(BASE_DIR, 'personal.pdf')
     if os.path.exists(file_path):
         with open(file_path, 'rb') as file:
             bot.send_document(message.chat.id, file)
     else:
-        bot.send_message(message.chat.id, 'Файл не найден. Проверьте путь к файлу.')
+        bot.send_message(message.chat.id, f'Файл не найден: {file_path}')
     pass
 
 
@@ -129,12 +131,12 @@ def handle_online_course_details(message):
                      reply_markup=create_markup(), parse_mode='Markdown')
 
 def handle_payment(message):
-    file_path = '2026.02.17 Договор оферты2.pdf'
+    file_path = os.path.join(BASE_DIR, 'offer.pdf')
     if os.path.exists(file_path):
         with open(file_path, 'rb') as file:
             bot.send_document(message.chat.id, file)
     else:
-        bot.send_message(message.chat.id, 'Файл не найден. Проверьте путь к файлу.')
+        bot.send_message(message.chat.id, f'Файл не найден: {file_path}')
 
     msg = bot.send_message(message.chat.id,
                      'Оплату производить по этой ссылке 30.000 тенге: \n'
@@ -155,5 +157,7 @@ def handle_payment(message):
 
     threading.Thread(target=expire_message, args=(message.chat.id, msg.message_id), daemon=True).start()
 
+print("BASE_DIR:", BASE_DIR)
+print("FILES:", os.listdir(BASE_DIR))
 # --- запуск бота ---
 bot.infinity_polling()
