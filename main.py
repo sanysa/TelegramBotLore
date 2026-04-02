@@ -73,7 +73,7 @@ def main(message):
 
 
 def handle_personaldate(message):
-    file_path = '/Users/sanbex/Downloads/bot/personaldate.pdf'
+    file_path = 'personaldate.pdf'
     if os.path.exists(file_path):
         with open(file_path, 'rb') as file:
             bot.send_document(message.chat.id, file)
@@ -129,7 +129,7 @@ def handle_online_course_details(message):
                      reply_markup=create_markup(), parse_mode='Markdown')
 
 def handle_payment(message):
-    file_path = '/Users/sanbex/Downloads/bot/2026.02.17 Договор оферты2.pdf'
+    file_path = '2026.02.17 Договор оферты2.pdf'
     if os.path.exists(file_path):
         with open(file_path, 'rb') as file:
             bot.send_document(message.chat.id, file)
