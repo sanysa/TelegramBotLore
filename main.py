@@ -179,4 +179,4 @@ print("FILES:", os.listdir(BASE_DIR))
 
 bot.infinity_polling(timeout=10, long_polling_timeout=5)
 # --- запуск бота ---
-bot.infinity_polling()
+
