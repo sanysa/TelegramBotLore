@@ -4,10 +4,8 @@ import os
 import telebot
 from telebot import types
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-
-API_TOKEN = os.getenv("7244528475:AAFUcVB4Yd5hNH49emg3Rn9CqP_PksEiT64")
-bot = telebot.TeleBot(API_TOKEN)
+API_TOKEN = '7244528475:AAFUcVB4Yd5hNH49emg3Rn9CqP_PksEiT64' 
+bot = telebot.TeleBot(API_TOKEN) 
 bot.remove_webhook()
 
 def create_markup():
