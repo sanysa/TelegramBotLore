@@ -93,7 +93,6 @@ def handle_personaldate(message):
             bot.send_document(message.chat.id, file)
     else:
         bot.send_message(message.chat.id, f'Файл не найден: {file_path}')
-    pass
 
 
 @bot.message_handler(content_types=['text'])
@@ -178,4 +177,3 @@ print("BASE_DIR:", BASE_DIR)
 print("FILES:", os.listdir(BASE_DIR))
 
 bot.infinity_polling(timeout=10, long_polling_timeout=5)
-
