@@ -28,7 +28,7 @@ def handle_contact(message):
                      'Свяжитесь с помощницами Каринэ по следующим номерам:\n'
                      'https://wa.me/+77768867228\n'
                      'https://wa.me/+77009123282\n'
-                     'https://wa.me/+77070702532\n'
+                     'https://wa.me/+77070702532\n',
                      reply_markup=create_markup(), disable_web_page_preview=True)
 
 def handle_information(message):
@@ -144,7 +144,7 @@ def handle_online_course_details(message):
         'Будет сформирована продуктовая корзина для понимания, из чего будет состоять ваш рацион.\n\n'
         'Уведомляем Вас, что после загрузки видео урока по питанию возврат денежных средств будет невозможен🤫 Также просим учесть, что абонемент НЕ может быть заморожен или перенесен на следующий месяц🙏🏻, так как мы закрепляем за вами место.',
         reply_markup=create_markup(),
-        parse_mode='None'
+        parse_mode=None
     )
 
 def handle_payment(message):
