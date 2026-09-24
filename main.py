@@ -26,7 +26,6 @@ def create_markup():
 def handle_contact(message):
     bot.send_message(message.chat.id,
                      'Свяжитесь с помощницами Каринэ по следующим номерам:\n'
-                     'https://wa.me/+77768867228\n'
                      'https://wa.me/+77009123282\n'
                      'https://wa.me/+77070702532\n',
                      reply_markup=create_markup(), disable_web_page_preview=True)
@@ -179,7 +178,6 @@ def handle_payment(message):
 
                      '👇🏻👇🏻👇🏻👇🏻👇🏻👇🏻\n'
                      'Ватсап номера:\n'
-                     'https://wa.me/+77768867228\n'
                      'https://wa.me/+77009123282\n'
                      'https://wa.me/+77070702532\n'
                      'Убедитесь, что вы добавились в группу ватсапе, после оплаты.\n'
